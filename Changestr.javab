@@ -1,0 +1,31 @@
+# Java
+import java.util.Scanner;
+class Changestr
+{
+    void display()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter a sentence");
+        String input = sc.nextLine();
+        char ch = ' ';
+        String word = " ";
+        for(int i = 0 ; i < input.length() ; i ++)
+        {
+            ch = input.charAt(i);
+            if(ch != ' ')
+            {
+                if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                {
+                    word = word + ((char)((int)ch+1));
+                }
+                else
+                {
+                    word = word + ch;
+                }
+            }
+            else
+                word = word + " ";
+        }
+        System.out.println("the required sentence is"+" "+word);
+    }
+}
