@@ -1,0 +1,104 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package bst;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author User
+ */
+class Node
+{
+    int value;
+    Node left;
+    Node right;
+    
+    Node()
+    {
+        left = null;
+        right = null;
+    }
+    
+    Node(int v)
+    {
+        value = v;
+        left = null;
+        right = null;
+    }
+}
+public class BST 
+{
+    Node root;
+    
+    BST()
+    {
+        root = new Node();
+        root.left = null;
+        root.right = null;
+    }
+    
+    boolean insert(Node inRoot, int v)
+    {
+        if (inRoot == null)
+        {
+            inRoot = new Node(v);
+            return true;
+        }
+        else if (v < inRoot.value)
+        {
+            return insert(inRoot.left, v);
+        }
+        else if (v > inRoot.value)
+        {
+            return insert(inRoot.right, v);
+        }
+        else
+            return false;
+    }
+    
+    void display(Node inRoot)
+    {
+        if (inRoot == null)
+        {
+            System.out.println("Tree is empty");
+        }
+        else
+        {
+            if (inRoot.left == null && inRoot.right == null) 
+            { 
+                System.out.println(inRoot.value);
+            }
+            else if(inRoot.left != null && inRoot.right == null)
+            {
+                display(inRoot.left);
+            }
+            else
+            {
+                display(inRoot.right);
+            }
+        }
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) 
+    {
+        // TODO code application logic here
+        BST myTree = new BST();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter the number");
+        for (int i = 0; i < 5; i++)
+        {
+            int input = sc.nextInt();
+            myTree.insert(myTree.root, input);
+        }
+        System.out.println("The BST is: ");
+        myTree.display(myTree.root);
+    }
+    
+}
